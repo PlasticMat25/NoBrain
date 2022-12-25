@@ -10,6 +10,8 @@ function randomIntFromInterval(min, max) {
 module.exports = {
     name: Events.MessageCreate,
     async execute(message) {
+        if(message.author.bot) return
+        
         const memberDocument = await getMember(message.guildId, message.author.id) 
         
         if(!memberDocument) return
