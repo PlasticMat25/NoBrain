@@ -1,5 +1,7 @@
 const { Events } = require('discord.js')
 
+const { commandStats } = require('../database')
+
 module.exports = {
     name: Events.InteractionCreate,
     async execute(interaction) {
@@ -8,9 +10,10 @@ module.exports = {
         const { client, commandName } = interaction
     
         const command = client.commands.get(commandName)
-    
         if(!command) return console.error(`No command matching ${commandName} was found.`)
     
+        commandStats(commandName)
+
         try {
             await command.execute(interaction)
         } catch ( error ) {

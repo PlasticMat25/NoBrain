@@ -3,7 +3,8 @@ const { QuickDB } = require('quick.db')
 const database = new QuickDB()
 
 const tables = {
-    member: 'member'
+    member: 'member',
+    command: 'command'
 }
 
 const keys = {
@@ -17,7 +18,7 @@ const addXp = (userId, guildId, amount) => {
     const memberCollection = getCollection(guildId, tables.member)
     const memberDocument = memberCollection.table(pre(userId))
 
-    memberDocument.add(keys.xp, amount)
+    return memberDocument.add(keys.xp, amount)
 }
 
 const getMember = (guildId, userId) => {
@@ -28,4 +29,11 @@ const getMember = (guildId, userId) => {
     return memberDocument.all()
 }
 
-module.exports = { database, addXp, getMember }
+const commandStats = (name) => {
+    const commandCollection = database.table(tables.command)
+    commandCollection.add(name, 1)
+}
+
+const getCommands = () => database.table(tables.command).all()
+
+module.exports = { database, addXp, getMember, commandStats, getCommands }
