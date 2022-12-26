@@ -34,6 +34,9 @@ const commandStats = (name) => {
     commandCollection.add(name, 1)
 }
 
-const getCommands = () => database.table(tables.command).all()
+const getCommands = () => {
+    const all = database.table(tables.command).all()
+    return all
+}
 
 module.exports = { database, addXp, getMember, commandStats, getCommands }

@@ -6,6 +6,7 @@ module.exports = {
         .setName('command_stats')
         .setDescription('View most popular commands!'),
     async execute(interaction) {
+        await interaction.deferReply();
         let description = ''
 
         const commands = await getCommands()
@@ -19,6 +20,6 @@ module.exports = {
             .setTitle(interaction.member.user.username)
             .setDescription(description)
 
-        interaction.reply({embeds: [embed], ephemeral: true})
+        interaction.editReply({embeds: [embed], ephemeral: true})
     }
 }

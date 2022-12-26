@@ -15,7 +15,7 @@ for(let i = 0; i < LEVELS - 1; i++) {
 const convertXpToLevel = (xp) => {
     for(let i = 0; i < LEVELS; i++) {
         const xpNeeded = levelCheckpoints[i]
-        
+        conso  
         if(xp < xpNeeded) return i + 1
     }
 
