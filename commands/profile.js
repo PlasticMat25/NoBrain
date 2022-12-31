@@ -8,7 +8,7 @@ module.exports = {
         .setDescription('View your profile card!'),
     async execute(interaction) {
         const member = await getMember(interaction.guildId, interaction.user.id)
-        const xp = member.find(field => field.id == "xp")?.value
+        const xp = member.find(field => field.id == "xp")?.value || 0
 
         console.log(interaction.member.avatarURL())
 

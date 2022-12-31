@@ -24,7 +24,7 @@ module.exports = {
             .setTitle("Icanhazdadjoke")
             .setDescription(joke.joke)
             .setThumbnail("https://slack-files2.s3-us-west-2.amazonaws.com/avatars/2016-08-13/69162711190_9ce4a3707b47d2a5a8d4_512.png")
-            .setFooter({text: "Api we used: https://icanhazdadjoke.com/"})
+            .setFooter({text: "Api used: https://icanhazdadjoke.com/"})
 
         interaction.editReply({embeds: [embed]})
     }

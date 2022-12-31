@@ -31,7 +31,7 @@ module.exports = {
                 {name: "participants", value: activity.participants.toString(), inline: true},
                 {name: "price", value: activity.price.toString(), inline: true},
             )
-            .setFooter({text: "Api we used: http://www.boredapi.com/"})
+            .setFooter({text: "Api used: http://www.boredapi.com/"})
 
         interaction.editReply({embeds: [embed]})
     }

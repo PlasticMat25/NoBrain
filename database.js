@@ -8,7 +8,8 @@ const tables = {
 }
 
 const keys = {
-    xp: 'xp'
+    xp: 'xp',
+    github: 'github'
 }
 
 const pre = (key) => "db".concat(key)
@@ -19,6 +20,13 @@ const addXp = (userId, guildId, amount) => {
     const memberDocument = memberCollection.table(pre(userId))
 
     return memberDocument.add(keys.xp, amount)
+}
+
+const setGithubUrl = (userId, guildId, url) => {
+    const memberCollection = getCollection(guildId, tables.member)
+    const memberDocument = memberCollection.table(pre(userId))
+    
+    return memberDocument.set(keys.github, url)
 }
 
 const getMember = (guildId, userId) => {
@@ -39,4 +47,4 @@ const getCommands = () => {
     return all
 }
 
-module.exports = { database, addXp, getMember, commandStats, getCommands }
+module.exports = { database, setGithubUrl, addXp, getMember, commandStats, getCommands }
